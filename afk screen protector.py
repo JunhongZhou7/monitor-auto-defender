@@ -61,7 +61,7 @@ try:
             # Save the frame
                 cv2.imwrite(OUTPUT_IMAGE, frame)
 
-                yag = yagmail.SMTP("junhong050707@gmail.com","smsl pbyv zcdq obup")
+                yag = yagmail.SMTP("your_email_here","email_code_here")
             # Send email
                 yag.send(
                     to=EMAIL_RECEIVER,
