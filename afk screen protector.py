@@ -11,7 +11,7 @@ CHECK_INTERVAL = 5  # in seconds
 OUTPUT_IMAGE = "stranger_detected.jpg"
 EMAIL_RECEIVER = ""  
 EMAIL_SENDER = ""
-OWNER_IMAGE = face_recognition.load_image_file()
+OWNER_IMAGE = face_recognition.load_image_file() #put image file path here
 OWNER_ENCODING = face_recognition.face_encodings(OWNER_IMAGE)[0]
 # ---------------
 
@@ -19,7 +19,7 @@ OWNER_ENCODING = face_recognition.face_encodings(OWNER_IMAGE)[0]
 model = YOLO("yolov8s.pt")
 
 # Setup webcam
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(0) #0 for native camera; if you are using an external camera, enter 1
 if not cap.isOpened():
     print("Error: Could not open webcam.")
     exit()
@@ -53,8 +53,6 @@ try:
                 face_recognition.compare_faces([OWNER_ENCODING], encoding, tolerance=0.8)[0]
                 for encoding in face_encodings)
 
-
-                
             if not owner_present:
                 print(f"[{time.ctime()}]  !! stranger detected !!")
 
